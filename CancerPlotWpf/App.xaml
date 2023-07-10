@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:helpers="clr-namespace:CancerPlotWpf.Helpers"
     DispatcherUnhandledException="OnDispatcherUnhandledException"
     Exit="OnExit"
     Startup="OnStartup">
@@ -31,6 +32,9 @@
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="FontWeight" Value="Regular" />
             </Style>
+
+            <helpers:DescriptionEnumConverter x:Key="DescriptionEnumConverter"/>
+            <helpers:ValueEnumConverter x:Key="ValueEnumConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

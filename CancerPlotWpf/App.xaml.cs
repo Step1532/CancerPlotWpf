@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
+using Wpf.Ui.Controls;
 using Wpf.Ui.Mvvm.Contracts;
 using Wpf.Ui.Mvvm.Services;
 
@@ -45,6 +46,9 @@ namespace CancerPlotWpf
 				// Main window with navigation
 				services.AddScoped<INavigationWindow, Views.Windows.MainWindow>();
 				services.AddScoped<ViewModels.MainWindowViewModel>();
+
+				services.AddScoped<UiWindow, Views.Windows.AddPatientWindow>();
+				services.AddScoped<ViewModels.AddPatientWindowViewModel>();
 
 				// Views and ViewModels
 				services.AddScoped<Views.Pages.DashboardPage>();
