@@ -25,15 +25,24 @@
             <ListView ItemsSource="{Binding ViewModel.Patients}" SelectedItem="{Binding ViewModel.SelectedPatient}">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:Patient}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="5" Text="{Binding Surname}"/>
-                            <TextBlock Margin="5" Text="{Binding Name}"/>
-                            <TextBlock Margin="5" Text="{Binding Patronymic}"/>
-                            <TextBlock Margin="5" Text="{Binding Gender, Converter={StaticResource DescriptionEnumConverter}}"/>
-                            <TextBlock Margin="5" Text="{Binding Birthday}"/>
-                            <TextBlock Margin="5" Text="{Binding CardId}"/>
-                            <TextBlock Margin="5" Text="{Binding Phone}"/>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="10" />
+                                <ColumnDefinition MinWidth="10" />
+                                <ColumnDefinition MinWidth="10" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition MinWidth="10" />
+                                <ColumnDefinition MinWidth="10" />
+                                <ColumnDefinition MinWidth="10" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Surname}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Patronymic}"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Gender, Converter={StaticResource DescriptionEnumConverter}}"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding Birthday}"/>
+                            <TextBlock Grid.Column="5" Text="{Binding CardId}"/>
+                            <TextBlock Grid.Column="6" HorizontalAlignment="Center" Text="{Binding Phone}"/>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

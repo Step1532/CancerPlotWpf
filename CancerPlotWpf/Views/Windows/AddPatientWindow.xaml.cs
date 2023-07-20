@@ -34,5 +34,6 @@ namespace CancerPlotWpf.Views.Windows
 
 			InitializeComponent();
 		}
-	}
+
+    }
 }

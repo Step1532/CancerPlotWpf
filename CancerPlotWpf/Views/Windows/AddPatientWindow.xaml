@@ -38,7 +38,7 @@
                     <StackPanel>
                         <ui:Card>
                             <StackPanel>
-                                <StackPanel DataContext="{Binding ViewModel.Patient}">
+                                <StackPanel>
                                     <TextBlock Text="Личные данные" Style="{StaticResource SubTitle}"></TextBlock>
                                     <Grid Margin="0, 10, 0, 0">
                                         <Grid.ColumnDefinitions>
@@ -57,36 +57,36 @@
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Column="0" Grid.Row="0">
                                             <Label Content="Фамилия" Target="SurnameTextBox" ></Label>
-                                            <TextBox x:Name="SurnameTextBox" Text="{Binding Surname}" Margin="0, 0, 15, 0"/>
+                                            <TextBox x:Name="SurnameTextBox" Text="{Binding ViewModel.Surname}" Margin="0, 0, 15, 0"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" Grid.Row="0">
                                             <Label Content="Имя" Target="NameTextBox"></Label>
-                                            <TextBox x:Name="NameTextBox" Text="{Binding Name}" Margin="0, 0, 15, 0"/>
+                                            <TextBox x:Name="NameTextBox" Text="{Binding ViewModel.Name}" Margin="0, 0, 15, 0"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="2" Grid.Row="0">
                                             <Label Content="Отчество" Target="PatronymicTextBox"></Label>
-                                            <TextBox x:Name="PatronymicTextBox" Text="{Binding Patronymic}" Margin="0, 0, 15, 0"/>
+                                            <TextBox x:Name="PatronymicTextBox" Text="{Binding ViewModel.Patronymic}" Margin="0, 0, 15, 0"/>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="0" Grid.Row="2">
                                             <Label Content="Пол"></Label>
-                                            <RadioButton Content="Мужской"></RadioButton>
-                                            <RadioButton Content="Женский"></RadioButton>
+                                            <RadioButton Content="Мужской" IsChecked="{Binding ViewModel.Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Male}"></RadioButton>
+                                            <RadioButton Content="Женский"  IsChecked="{Binding ViewModel.Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Female}"></RadioButton>
                                             <!--<TextBlock Text="{Binding Gender, Converter={StaticResource ValueEnumConverter}}" Style="{StaticResource BodyStrong}"/>-->
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2">
                                             <Label Content="Дата рождения"></Label>
-                                            <DatePicker></DatePicker>
+                                            <DatePicker  SelectedDate="{Binding ViewModel.Birthday}"></DatePicker>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="0" Grid.Row="6">
                                             <Label Content="№ АК" Target="CardIdTextBox"></Label>
-                                            <TextBox x:Name="CardIdTextBox" Text="{Binding CardId}" Margin="0, 0, 15, 0"/>
+                                            <TextBox x:Name="CardIdTextBox" Text="{Binding ViewModel.CardId}" Margin="0, 0, 15, 0"/>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" >
                                             <Label Content="Телефон" Target="PhoneTextBox"></Label>
-                                            <TextBox x:Name="PhoneTextBox" Text="{Binding Phone}" Margin="0, 0, 15, 0"/>
+                                            <TextBox x:Name="PhoneTextBox" Text="{Binding ViewModel.Phone}" Margin="0, 0, 15, 0"/>
                                         </StackPanel>
                                     </Grid>
                                 </StackPanel>

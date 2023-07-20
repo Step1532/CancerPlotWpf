@@ -1,34 +1,35 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace CancerPlotWpf.Helpers
 {
-	internal class EnumToBooleanConverter : IValueConverter
-	{
-		public EnumToBooleanConverter()
-		{
-		}
+    public class EnumBooleanConverter : IValueConverter
+    {
+        #region IValueConverter Members
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string parameterString = parameter as string;
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
 
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			if (parameter is not String enumString)
-				throw new ArgumentException("ExceptionEnumToBooleanConverterParameterMustBeAnEnumName");
+            if (Enum.IsDefined(value.GetType(), value) == false)
+                return DependencyProperty.UnsetValue;
 
-			if (!Enum.IsDefined(typeof(Wpf.Ui.Appearance.ThemeType), value))
-				throw new ArgumentException("ExceptionEnumToBooleanConverterValueMustBeAnEnum");
+            object parameterValue = Enum.Parse(value.GetType(), parameterString);
 
-			var enumValue = Enum.Parse(typeof(Wpf.Ui.Appearance.ThemeType), enumString);
+            return parameterValue.Equals(value);
+        }
 
-			return enumValue.Equals(value);
-		}
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string parameterString = parameter as string;
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			if (parameter is not String enumString)
-				throw new ArgumentException("ExceptionEnumToBooleanConverterParameterMustBeAnEnumName");
-
-			return Enum.Parse(typeof(Wpf.Ui.Appearance.ThemeType), enumString);
-		}
-	}
+            return Enum.Parse(targetType, parameterString);
+        }
+        #endregion
+    }
 }

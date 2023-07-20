@@ -35,6 +35,8 @@
 
             <helpers:DescriptionEnumConverter x:Key="DescriptionEnumConverter"/>
             <helpers:ValueEnumConverter x:Key="ValueEnumConverter"/>
+            <helpers:EnumBooleanConverter x:Key="EnumToBooleanConverter"/>
+            <helpers:DateTimeToDateOnlyConverter x:Key="DateTimeToDateOnlyConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
