@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace CancerPlotWpf.Models;
+namespace CancerPlot.Core.Models;
 
 public enum Gender
 {

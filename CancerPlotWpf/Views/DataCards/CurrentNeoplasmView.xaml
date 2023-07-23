@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="CancerPlotWpf.Views.DataCards.CurrentNeoplasmView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:models="clr-namespace:CancerPlot.Core.Models;assembly=CancerPlot.Core"
+             xmlns:dataCards="clr-namespace:CancerPlotWpf.Views.DataCards"
+             mc:Ignorable="d" MinWidth="350"
+             d:DataContext="{d:DesignInstance dataCards:CurrentNeoplasmView, IsDesignTimeCreatable=False}">
+    <ui:Card Visibility="{Binding Path=ViewModel.Neoplasms, TargetNullValue=Collapsed}" >
+            <StackPanel >
+                <Grid  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Исследуемые новообразования" Style="{StaticResource SubTitle}"></TextBlock>
+                    <ui:Button Grid.Column="1" Icon="Edit20" ></ui:Button>
+                </Grid>
+                <ListView ItemsSource="{Binding ViewModel.Neoplasms}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:CurrentNeoplasm}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="10" />
+                                    <ColumnDefinition MinWidth="10" />
+                                    <ColumnDefinition MinWidth="10" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Id }"/>
+                                <TextBlock Grid.Column="1" Text="{Binding EyeLocalization, Converter={StaticResource DescriptionEnumConverter}}"/>
+                                <TextBlock Grid.Column="2" Text="{Binding RefinedLocalization.Name}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+        </StackPanel>
+    </ui:Card>
+</UserControl>

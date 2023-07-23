@@ -8,7 +8,9 @@ namespace CancerPlotWpf.Helpers;
 public class ValueEnumConverter : IValueConverter
 {
 	private string GetEnumValue(Enum enumObj)
-	{
+    {
+        if (enumObj == null)
+            return string.Empty;
 		FieldInfo fieldInfo = enumObj.GetType().GetField(enumObj.ToString()) ?? throw new InvalidOperationException();
 
 		object[] attribArray = fieldInfo.GetCustomAttributes(false);

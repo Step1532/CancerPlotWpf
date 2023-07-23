@@ -4,9 +4,54 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CancerPlotWpf.Views.DataCards"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        
-    </Grid>
+             d:DataContext="{d:DesignInstance local:PreviousDiagnosticView, IsDesignTimeCreatable=True}"
+             MinWidth="350"
+             Height="Auto">
+    <ui:Card Visibility="{Binding ViewModel.DiagnosticData, TargetNullValue=Collapsed}">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Ранее проведенное лечение/диагностика" Style="{StaticResource SubTitle}"></TextBlock>
+                <ui:Button Grid.Column="1" Icon="Edit20"></ui:Button>
+            </Grid>
+
+            <Grid 
+                Visibility="{Binding Path = ViewModel.DiagnosticData.PreviousBiopsy, TargetNullValue=Collapsed}"
+                Margin="0, 15, 0, 0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Биопсия в другом учреждении" Style="{StaticResource BodyStrong}"></TextBlock>
+                <TextBlock Margin="10, 0, 0, 0" Grid.Column="1" Grid.Row="0" Text="{Binding ViewModel.DiagnosticData.PreviousBiopsy.Date}" Style="{StaticResource BodyStrong}"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding ViewModel.DiagnosticData.PreviousBiopsy.Conclusion}" TextWrapping="Wrap"></TextBlock>
+            </Grid>
+
+
+            <Grid Margin="0, 15, 0, 0" DataContext="{Binding ViewModel.Data.PreviousCytology}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Цитология" Style="{StaticResource BodyStrong}"></TextBlock>
+                <TextBlock Margin="10, 0, 0, 0" Grid.Column="1" Grid.Row="0" Text="{Binding Date}" Style="{StaticResource BodyStrong}"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Conclusion}" TextWrapping="Wrap"></TextBlock>
+            </Grid>
+
+
+        </StackPanel>
+    </ui:Card>
 </UserControl>

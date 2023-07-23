@@ -1,13 +1,20 @@
 ﻿using CancerPlot.Core.Models;
-using CancerPlotWpf.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CancerPlotWpf;
+namespace CancerPlot.Repository;
 
 public class ApplicationContext : DbContext
 {
-	public DbSet<PersonalData> Patients { get; set; } = null!;
-	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	public DbSet<Patient> Patients { get; set; } = null!;
+
+    public DbSet<PersonalData> PersonalData { get; set; } = null!;
+
+    public DbSet<CurrentNeoplasm> CurrentNeoplasms { get; set; } = null!;
+    public DbSet<RefinedLocalization> RefinedLocalizations { get; set; } = null!;
+
+    public DbSet<PreviousDiagnosticData> PreviousDiagnosticData { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
 		optionsBuilder.UseSqlite("Data Source=CancerPlot.db");
 	}

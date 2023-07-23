@@ -14,8 +14,8 @@ namespace CancerPlotWpf.Views.Pages
 
 		public DashboardPage(ViewModels.DashboardViewModel viewModel)
 		{
-			ViewModel = viewModel;
-
+            ViewModel = viewModel;
+            DataContext = this;
 			InitializeComponent();
 		}
 	}

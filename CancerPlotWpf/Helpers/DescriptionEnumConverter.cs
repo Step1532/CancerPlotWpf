@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System;
+﻿using System;
 using System.Windows.Data;
 using System.ComponentModel;
 using System.Reflection;
@@ -14,7 +13,9 @@ public class DescriptionEnumConverter : IValueConverter
 	}
 
 	private string GetEnumDescription(Enum enumObj)
-	{
+    {
+        if (enumObj == null)
+            return string.Empty;
 		FieldInfo fieldInfo = enumObj.GetType().GetField(enumObj.ToString()) ?? throw new InvalidOperationException();
 
 		object[] attribArray = fieldInfo.GetCustomAttributes(false);

@@ -32,6 +32,21 @@
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="FontWeight" Value="Regular" />
             </Style>
+            
+            
+            <Style x:Key="EditorSwitcher" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox} }">
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TextBox}">
+                                    <TextBlock Text="{TemplateBinding Text}" Style="{StaticResource BodyStrong}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
 
             <helpers:DescriptionEnumConverter x:Key="DescriptionEnumConverter"/>
             <helpers:ValueEnumConverter x:Key="ValueEnumConverter"/>

@@ -2,7 +2,13 @@
 
 namespace CancerPlot.Repository.Interfaces;
 
-public interface IPersonalDataRepository
+public interface IPatientRepository
 {
-    Task<List<Patient>> GetAllPatients();
+    Task<IEnumerable<Patient>> GetAllPatients();
+
+    Task<IEnumerable<PersonalData>> GetAllPersonalData();
+
+    Task<IEnumerable<CurrentNeoplasm>> GetCurrentNeoplasms(int patientId);
+    
+    Task<PreviousDiagnosticData?> GetPreviousDiagnosticData(int patientId);
 }

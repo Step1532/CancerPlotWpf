@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using CancerPlotWpf.ViewModels;
 
-namespace CancerPlotWpf.Views.Frames;
+namespace CancerPlotWpf.Views.DataCards;
 
 public partial class PersonalDataView : UserControl
 {
