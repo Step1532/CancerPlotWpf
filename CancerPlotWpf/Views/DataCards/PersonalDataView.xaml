@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="CancerPlotWpf.Views.Frames.PersonalDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CancerPlotWpf.Views.Frames"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:viewModels="clr-namespace:CancerPlotWpf.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance local:PersonalDataView, IsDesignTimeCreatable=True}" MinWidth="350">
+    <ui:Card>
+        <StackPanel>
+            <StackPanel >
+                <Grid  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Личные данные" Style="{StaticResource SubTitle}"></TextBlock>
+                    <ui:Button Grid.Column="1" Icon="Edit20" ></ui:Button>
+                </Grid>
+
+                <Grid Margin="0, 10, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition MinHeight="10" MaxHeight="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition MinHeight="10" MaxHeight="10" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0">
+                        <Label Content="Фамилия"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.Surname}" Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="0">
+                        <Label Content="Имя"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.Name}" Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Grid.Row="0">
+                        <Label Content="Отчество"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.Patronymic}" Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+                        <Label Content="Пол"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.Gender, Converter={StaticResource ValueEnumConverter}}"
+                                   Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="2">
+                        <Label Content="Дата рождения"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.Birthday}" Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Grid.Row="2">
+                        <Label Content="№ АК"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.CardId}" Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="0" Grid.Row="4">
+                        <Label Content="Телефон"></Label>
+                        <TextBlock Text="{Binding ViewModel.Patient.Phone}" Style="{StaticResource BodyStrong}" />
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+        </StackPanel>
+
+
+    </ui:Card>
+</UserControl>
