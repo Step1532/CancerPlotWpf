@@ -54,10 +54,10 @@
         <StackPanel x:Name="SidePanel" Grid.Column="2" Margin="10" >
             <ui:Card>
                 <ScrollViewer MaxHeight="600">
-                        <StackPanel>
-                       <dataCards:PersonalDataView Margin="10"/>
-                       <dataCards:CurrentNeoplasmView Margin="10"/>
-                       <dataCards:PreviousDiagnosticView Margin="10"/>
+                    <StackPanel>
+                        <dataCards:PersonalDataView Margin="10"/>
+                        <dataCards:CurrentNeoplasmView Margin="10"/>
+                        <dataCards:PreviousDiagnosticView Margin="10"/>
                     </StackPanel>
                 </ScrollViewer>
             </ui:Card>

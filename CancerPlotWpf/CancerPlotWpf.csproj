@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Messages\" />
+    <Folder Include="Views\controls\" />
   </ItemGroup>
 
   <ItemGroup>

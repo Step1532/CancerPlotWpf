@@ -31,32 +31,22 @@ namespace CancerPlotWpf
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
             .ConfigureServices((context, services) =>
             {
-                // App Host
                 services.AddHostedService<ApplicationHostService>();
 
-                // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
 
-                // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 
-                // TaskBar manipulation
                 services.AddSingleton<ITaskBarService, TaskBarService>();
 
-                // Service containing navigation, same as INavigationWindow... but without window
                 services.AddSingleton<INavigationService, NavigationService>();
 
-                // Main window with navigation
                 services.AddScoped<INavigationWindow, Views.Windows.MainWindow>();
                 services.AddScoped<ViewModels.MainWindowViewModel>();
 
-                //services.AddScoped<UiWindow, Views.Windows.AddPatientWindow>();
-                //services.AddScoped<ViewModels.AddPatientWindowViewModel>();
 
                 services.AddScoped<IPatientRepository, PatientRepository>();
                 services.AddDbContext<ApplicationContext>();
-                // Views and ViewModels
-                //services.AddTransient<PersonalDataViewModel>();
                 services.AddScoped<PersonalDataView>();
                 services.AddScoped<ViewModels.PersonalDataViewModel>();
 
@@ -74,7 +64,6 @@ namespace CancerPlotWpf
                 services.AddScoped<Views.Pages.SettingsPage>();
                 services.AddScoped<ViewModels.SettingsViewModel>();
 
-                // Configuration
                 services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
             }).Build();
 

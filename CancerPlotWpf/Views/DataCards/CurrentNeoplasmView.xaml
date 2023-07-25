@@ -9,31 +9,34 @@
              mc:Ignorable="d" MinWidth="350"
              d:DataContext="{d:DesignInstance dataCards:CurrentNeoplasmView, IsDesignTimeCreatable=False}">
     <ui:Card Visibility="{Binding Path=ViewModel.Neoplasms, TargetNullValue=Collapsed}" >
-            <StackPanel >
-                <Grid  >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Исследуемые новообразования" Style="{StaticResource SubTitle}"></TextBlock>
-                    <ui:Button Grid.Column="1" Icon="Edit20" ></ui:Button>
-                </Grid>
-                <ListView ItemsSource="{Binding ViewModel.Neoplasms}">
+        <StackPanel >
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Исследуемые новообразования" Style="{StaticResource SubTitle}"></TextBlock>
+                <ui:Button Grid.Column="1" Icon="Edit20" ></ui:Button>
+            </Grid>
+                    <ListView ItemsSource="{Binding ViewModel.Neoplasms}">
+   
                     <ListView.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:CurrentNeoplasm}">
+                            <ScrollViewer>
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition MinWidth="10" />
-                                    <ColumnDefinition MinWidth="10" />
-                                    <ColumnDefinition MinWidth="10" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Id }"/>
-                                <TextBlock Grid.Column="1" Text="{Binding EyeLocalization, Converter={StaticResource DescriptionEnumConverter}}"/>
-                                <TextBlock Grid.Column="2" Text="{Binding RefinedLocalization.Name}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="10" />
+                                        <ColumnDefinition MinWidth="10" />
+                                        <ColumnDefinition MinWidth="10" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Id }"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding EyeLocalization, Converter={StaticResource DescriptionEnumConverter}}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding RefinedLocalization.Name}"/>
+                                </Grid>
+                            </ScrollViewer>
+                    </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
         </StackPanel>
     </ui:Card>
 </UserControl>
